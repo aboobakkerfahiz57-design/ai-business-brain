@@ -1,1 +1,1967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>AI Business Brain</title>
+
+  <meta
+    name="description"
+    content="AI Business Brain — intelligent strategy, growth, analysis and business planning."
+  >
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg2: #080b1d;
+      --blue: #38bdf8;
+      --violet: #8b5cf6;
+      --white: #f8fafc;
+      --muted: #94a3b8;
+      --amber: #f59e0b;
+      --card: rgba(15, 23, 42, 0.72);
+      --border: rgba(148, 163, 184, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================== */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(5, 8, 22, 0.72),
+          rgba(5, 8, 22, 0.94)
+        ),
+        url("ai-business-brain-bg.png") center center / cover no-repeat;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 650px;
+      height: 650px;
+      left: -250px;
+      top: 250px;
+      background: rgba(56, 189, 248, 0.12);
+      filter: blur(130px);
+      border-radius: 50%;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .violet-glow {
+      position: fixed;
+      width: 650px;
+      height: 650px;
+      right: -300px;
+      top: 400px;
+      background: rgba(139, 92, 246, 0.13);
+      filter: blur(140px);
+      border-radius: 50%;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      background: rgba(5, 8, 22, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.4px;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, var(--blue), var(--violet));
+      box-shadow:
+        0 0 30px rgba(56,189,248,0.28);
+      font-size: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 9px 13px;
+      color: #cbd5e1;
+      font-size: 14px;
+      border-radius: 10px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .nav-cta {
+      padding: 10px 16px !important;
+      color: white !important;
+      background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--violet)
+      );
+      box-shadow: 0 0 25px rgba(139,92,246,0.22);
+    }
+
+    .mobile-menu {
+      display: none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      border-radius: 10px;
+      padding: 8px 11px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       GENERAL
+    ========================== */
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        90deg,
+        var(--blue),
+        #a78bfa,
+        var(--violet)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.24);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 150px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(56,189,248,0.25);
+      background: rgba(56,189,248,0.07);
+      color: #bae6fd;
+      font-size: 12px;
+      margin-bottom: 22px;
+    }
+
+    .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 15px var(--blue);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: .5; transform: scale(.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 7vw, 82px);
+      line-height: .98;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      color: #aab6ca;
+      font-size: 18px;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 13px;
+      padding: 13px 19px;
+      color: white;
+      transition: .25s ease;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--violet)
+      );
+      box-shadow:
+        0 12px 35px rgba(56,189,248,0.16),
+        0 12px 35px rgba(139,92,246,0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 18px 45px rgba(56,189,248,0.22),
+        0 18px 45px rgba(139,92,246,0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .brain-card {
+      padding: 14px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .brain-card img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+      opacity: .88;
+    }
+
+    .brain-overlay {
+      position: absolute;
+      inset: 14px;
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          180deg,
+          transparent 30%,
+          rgba(5,8,22,.85) 100%
+        );
+      pointer-events: none;
+    }
+
+    .brain-status {
+      position: absolute;
+      bottom: 35px;
+      left: 35px;
+      right: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .status-text {
+      color: white;
+      font-weight: 700;
+    }
+
+    .status-text small {
+      display: block;
+      color: #94a3b8;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 20px #22c55e;
+    }
+
+    /* =========================
+       PLANNER
+    ========================== */
+
+    .planner {
+      padding-top: 40px;
+    }
+
+    .planner-card {
+      border-radius: 25px;
+      padding: 32px;
+      max-width: 900px;
+      margin: 45px auto 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(148,163,184,0.17);
+      background: rgba(2,6,23,0.65);
+      color: white;
+      border-radius: 12px;
+      padding: 13px 14px;
+      outline: none;
+      transition: .2s ease;
+    }
+
+    .field textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(56,189,248,0.6);
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.08);
+    }
+
+    .generate-row {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .form-note {
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    /* =========================
+       RESULT
+    ========================== */
+
+    #result {
+      display: none;
+      margin-top: 28px;
+      border: 1px solid rgba(56,189,248,0.22);
+      border-radius: 18px;
+      padding: 25px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(56,189,248,.07),
+          rgba(139,92,246,.08)
+        );
+    }
+
+    #result.show {
+      display: block;
+      animation: reveal .45s ease;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .result-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .result-head h3 {
+      font-size: 24px;
+    }
+
+    .result-head p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .result-item {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(2,6,23,0.35);
+    }
+
+    .result-item strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .result-item span {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    /* =========================
+       FEATURE SECTIONS
+    ========================== */
+
+    .feature-section {
+      overflow: hidden;
+    }
+
+    .feature-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .feature-grid.reverse {
+      grid-template-columns: 1.1fr .9fr;
+    }
+
+    .feature-image {
+      border-radius: 25px;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 370px;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px;
+      transition: transform .5s ease;
+    }
+
+    .feature-image:hover img {
+      transform: scale(1.04);
+    }
+
+    .feature-content h3 {
+      font-size: 38px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .feature-content > p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #dbe4f0;
+    }
+
+    .check {
+      flex: 0 0 22px;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(56,189,248,0.12);
+      color: var(--blue);
+      font-size: 12px;
+    }
+
+    /* =========================
+       FOUR CARDS
+    ========================== */
+
+    .cards-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .info-card {
+      padding: 23px;
+      border-radius: 19px;
+      transition: .3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(56,189,248,0.25);
+    }
+
+    .info-card .number {
+      color: var(--amber);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .info-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* =========================
+       CTA
+    ========================== */
+
+    .cta {
+      padding-bottom: 130px;
+    }
+
+    .cta-card {
+      text-align: center;
+      border-radius: 28px;
+      padding: 65px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(56,189,248,.12);
+      border-radius: 50%;
+      filter: blur(90px);
+      left: 10%;
+      top: -150px;
+    }
+
+    .cta-card::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(139,92,246,.12);
+      border-radius: 50%;
+      filter: blur(90px);
+      right: 10%;
+      bottom: -170px;
+    }
+
+    .cta-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-card h2 {
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: 1.05;
+      margin-bottom: 15px;
+      letter-spacing: -2px;
+    }
+
+    .cta-card p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 28px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* =========================
+       BACK TO TOP
+    ========================== */
+
+    #topBtn {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(5,8,22,.82);
+      backdrop-filter: blur(12px);
+      color: white;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      z-index: 900;
+    }
+
+    #topBtn.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #topBtn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56,189,248,.4);
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .feature-grid,
+      .feature-grid.reverse {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      .brain-card img {
+        height: 380px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 20px;
+        right: 20px;
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(5,8,22,.96);
+        border: 1px solid var(--border);
+        border-radius: 15px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, 1160px);
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .form-grid,
+      .result-grid,
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .planner-card {
+        padding: 20px;
+      }
+
+      .feature-content h3 {
+        font-size: 30px;
+      }
+
+      .brain-card img {
+        height: 300px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="violet-glow"></div>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header>
+    <nav class="nav">
+
+      <a href="#home" class="logo">
+        <span class="logo-mark">✦</span>
+        <span>AI Business Brain</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#intelligence">Intelligence</a>
+        <a href="#growth">Growth</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#planner" class="nav-cta">Build Plan</a>
+      </div>
+
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
+        ☰
+      </button>
+
+    </nav>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="hero-badge">
+            <span class="pulse"></span>
+            Intelligent Business Planning System
+          </div>
+
+          <h1>
+            Think smarter.<br>
+            <span class="gradient-text">Grow faster.</span>
+          </h1>
+
+          <p class="hero-text">
+            AI Business Brain transforms business information into
+            intelligent strategy, growth opportunities, analysis and
+            actionable plans.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a href="#planner" class="btn btn-primary">
+              Build Your Business Plan →
+            </a>
+
+            <a href="#intelligence" class="btn btn-secondary">
+              Explore the Brain
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+          <div class="brain-card glass">
+
+            <img
+              src="ai-intelligence.png"
+              alt="Artificial intelligence visualization"
+            >
+
+            <div class="brain-overlay"></div>
+
+            <div class="brain-status">
+
+              <div class="status-text">
+                AI Business Intelligence
+                <small>Ready to analyze your business</small>
+              </div>
+
+              <span class="status-dot"></span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         BUSINESS PLANNER
+    ========================== -->
+
+    <section class="planner" id="planner">
+
+      <div class="container">
+
+        <div class="section-label">
+          AI Planner
+        </div>
+
+        <h2 class="section-title">
+          Turn your business into a
+          <span class="gradient-text">clear plan.</span>
+        </h2>
+
+        <p class="section-description">
+          Enter your business information and generate a structured
+          strategy directly inside the website.
+        </p>
+
+
+        <div class="planner-card glass">
+
+          <form id="businessForm">
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label for="businessName">
+                  Business Name
+                </label>
+
+                <input
+                  id="businessName"
+                  type="text"
+                  placeholder="Example: The Jewels"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="businessType">
+                  Business Type
+                </label>
+
+                <select id="businessType" required>
+
+                  <option value="">
+                    Select business type
+                  </option>
+
+                  <option value="Jewellery">
+                    Jewellery
+                  </option>
+
+                  <option value="E-commerce">
+                    E-commerce
+                  </option>
+
+                  <option value="Retail">
+                    Retail
+                  </option>
+
+                  <option value="Technology">
+                    Technology
+                  </option>
+
+                  <option value="Service">
+                    Service
+                  </option>
+
+                  <option value="Food & Beverage">
+                    Food & Beverage
+                  </option>
+
+                  <option value="Fashion">
+                    Fashion
+                  </option>
+
+                  <option value="Other">
+                    Other
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field full">
+
+                <label for="goal">
+                  Main Business Goal
+                </label>
+
+                <textarea
+                  id="goal"
+                  placeholder="Example: Increase customers, improve online sales and build a strong brand."
+                  required
+                ></textarea>
+
+              </div>
+
+            </div>
+
+
+            <div class="generate-row">
+
+              <span class="form-note">
+                Your plan is generated locally in this demo.
+              </span>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+              >
+                Generate Business Plan ✦
+              </button>
+
+            </div>
+
+          </form>
+
+
+          <!-- RESULT -->
+
+          <div id="result">
+
+            <div class="result-head">
+
+              <div>
+                <h3 id="resultTitle">
+                  Business Plan
+                </h3>
+
+                <p id="resultSubtitle">
+                  AI-generated strategic direction
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="resetResult"
+              >
+                Reset
+              </button>
+
+            </div>
+
+
+            <div class="result-grid">
+
+              <div class="result-item">
+                <strong>01 — Positioning</strong>
+                <span id="positioning"></span>
+              </div>
+
+              <div class="result-item">
+                <strong>02 — Customer Growth</strong>
+                <span id="customerGrowth"></span>
+              </div>
+
+              <div class="result-item">
+                <strong>03 — Digital Strategy</strong>
+                <span id="digitalStrategy"></span>
+              </div>
+
+              <div class="result-item">
+                <strong>04 — Retention</strong>
+                <span id="retention"></span>
+              </div>
+
+              <div class="result-item">
+                <strong>05 — Measurement</strong>
+                <span id="measurement"></span>
+              </div>
+
+              <div class="result-item">
+                <strong>06 — Next Action</strong>
+                <span id="nextAction"></span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         INTELLIGENCE
+    ========================== -->
+
+    <section
+      class="feature-section"
+      id="intelligence"
+    >
+
+      <div class="container">
+
+        <div class="section-label">
+          Intelligence
+        </div>
+
+        <h2 class="section-title">
+          Understand your business
+          <span class="gradient-text">deeply.</span>
+        </h2>
+
+        <p class="section-description">
+          Transform scattered business information into a clearer
+          understanding of customers, opportunities and priorities.
+        </p>
+
+
+        <div class="feature-grid">
+
+          <div class="feature-image glass">
+
+            <img
+              src="ai-intelligence.png"
+              alt="AI intelligence network"
+            >
+
+          </div>
+
+
+          <div class="feature-content">
+
+            <h3>
+              One brain for your
+              business decisions.
+            </h3>
+
+            <p>
+              AI Business Brain organizes the important parts of your
+              business so you can see where attention should go next.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>
+                <span class="check">✓</span>
+                Understand customer needs
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Identify business opportunities
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Discover areas that need improvement
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Turn information into decisions
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         GROWTH
+    ========================== -->
+
+    <section
+      class="feature-section"
+      id="growth"
+    >
+
+      <div class="container">
+
+        <div class="section-label">
+          Growth
+        </div>
+
+        <h2 class="section-title">
+          Find the path to
+          <span class="gradient-text">growth.</span>
+        </h2>
+
+        <p class="section-description">
+          Build a practical growth direction instead of guessing what
+          to do next.
+        </p>
+
+
+        <div class="feature-grid reverse">
+
+          <div class="feature-content">
+
+            <h3>
+              From opportunity
+              to execution.
+            </h3>
+
+            <p>
+              Growth becomes easier when your priorities are clear.
+              Build actions around customer acquisition, conversion
+              and repeat business.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>
+                <span class="check">✓</span>
+                Improve customer acquisition
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Improve conversion
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Increase repeat purchases
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Scale what works
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="feature-image glass">
+
+            <img
+              src="ai-growth.png"
+              alt="Digital business growth visualization"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ANALYSIS
+    ========================== -->
+
+    <section
+      class="feature-section"
+      id="analysis"
+    >
+
+      <div class="container">
+
+        <div class="section-label">
+          Analysis
+        </div>
+
+        <h2 class="section-title">
+          See what the
+          <span class="gradient-text">data means.</span>
+        </h2>
+
+        <p class="section-description">
+          Analysis turns business activity into useful signals that
+          help you make better decisions.
+        </p>
+
+
+        <div class="feature-grid">
+
+          <div class="feature-image glass">
+
+            <img
+              src="ai-analysis.png"
+              alt="AI data analysis visualization"
+            >
+
+          </div>
+
+
+          <div class="feature-content">
+
+            <h3>
+              Replace assumptions
+              with insight.
+            </h3>
+
+            <p>
+              Study customer behavior, campaign performance and
+              business priorities to identify where your effort can
+              create the most value.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>
+                <span class="check">✓</span>
+                Measure campaign performance
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Understand conversion
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Find high-performing opportunities
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Continuously improve decisions
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         STRATEGY
+    ========================== -->
+
+    <section
+      class="feature-section"
+      id="strategy"
+    >
+
+      <div class="container">
+
+        <div class="section-label">
+          Strategy
+        </div>
+
+        <h2 class="section-title">
+          Build a strategy that
+          <span class="gradient-text">moves.</span>
+        </h2>
+
+        <p class="section-description">
+          A strategy should become action. Turn ideas into priorities,
+          execution and measurable outcomes.
+        </p>
+
+
+        <div class="feature-grid reverse">
+
+          <div class="feature-content">
+
+            <h3>
+              Strategy built for
+              real business.
+            </h3>
+
+            <p>
+              Create a focused direction for your business and move
+              from planning into execution.
+            </p>
+
+            <ul class="feature-list">
+
+              <li>
+                <span class="check">✓</span>
+                Define the right priorities
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Create practical actions
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Measure progress
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Scale successful strategies
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="feature-image glass">
+
+            <img
+              src="ai-strategy.png"
+              alt="AI business strategy visualization"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOUR PILLARS
+    ========================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-label">
+          Business Brain
+        </div>
+
+        <h2 class="section-title">
+          Four systems.
+          <span class="gradient-text">
+            One brain.
+          </span>
+        </h2>
+
+        <p class="section-description">
+          Every strong business needs clarity, growth, analysis and
+          strategy working together.
+        </p>
+
+
+        <div class="cards-grid">
+
+          <div class="info-card glass">
+
+            <div class="number">
+              01
+            </div>
+
+            <h3>
+              Intelligence
+            </h3>
+
+            <p>
+              Understand the business and its customers.
+            </p>
+
+          </div>
+
+
+          <div class="info-card glass">
+
+            <div class="number">
+              02
+            </div>
+
+            <h3>
+              Growth
+            </h3>
+
+            <p>
+              Find opportunities to acquire and retain customers.
+            </p>
+
+          </div>
+
+
+          <div class="info-card glass">
+
+            <div class="number">
+              03
+            </div>
+
+            <h3>
+              Analysis
+            </h3>
+
+            <p>
+              Turn activity and information into useful insight.
+            </p>
+
+          </div>
+
+
+          <div class="info-card glass">
+
+            <div class="number">
+              04
+            </div>
+
+            <h3>
+              Strategy
+            </h3>
+
+            <p>
+              Convert insight into measurable action.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL CTA
+    ========================== -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <div class="cta-card glass">
+
+          <h2>
+            Your business has
+            <span class="gradient-text">
+              potential.
+            </span>
+          </h2>
+
+          <p>
+            Give your business a clearer direction. Start with your
+            business information and build a practical plan.
+          </p>
+
+          <a
+            href="#planner"
+            class="btn btn-primary"
+          >
+            Start Building Your Plan →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © <span id="year"></span> AI Business Brain
+      </div>
+
+      <div>
+        Intelligent Strategy • Growth • Analysis
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- BACK TO TOP -->
+
+  <button
+    id="topBtn"
+    aria-label="Back to top"
+  >
+    ↑
+  </button>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /* -------------------------
+       MOBILE MENU
+    -------------------------- */
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+    mobileMenu.addEventListener("click", function () {
+
+      navLinks.classList.toggle("open");
+
+    });
+
+
+    /* Close mobile menu after clicking */
+
+    document.querySelectorAll(".nav-links a")
+      .forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+          navLinks.classList.remove("open");
+
+        });
+
+      });
+
+
+    /* -------------------------
+       BUSINESS PLAN GENERATOR
+    -------------------------- */
+
+    const businessForm =
+      document.getElementById("businessForm");
+
+    const result =
+      document.getElementById("result");
+
+    const resultTitle =
+      document.getElementById("resultTitle");
+
+    const resultSubtitle =
+      document.getElementById("resultSubtitle");
+
+    const positioning =
+      document.getElementById("positioning");
+
+    const customerGrowth =
+      document.getElementById("customerGrowth");
+
+    const digitalStrategy =
+      document.getElementById("digitalStrategy");
+
+    const retention =
+      document.getElementById("retention");
+
+    const measurement =
+      document.getElementById("measurement");
+
+    const nextAction =
+      document.getElementById("nextAction");
+
+
+    businessForm.addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+        const name =
+          document.getElementById("businessName")
+            .value
+            .trim();
+
+        const type =
+          document.getElementById("businessType")
+            .value;
+
+        const goal =
+          document.getElementById("goal")
+            .value
+            .trim();
+
+
+        if (!name || !type || !goal) {
+
+          alert(
+            "Please complete all business information."
+          );
+
+          return;
+
+        }
+
+
+        resultTitle.textContent =
+          name + " — Business Plan";
+
+        resultSubtitle.textContent =
+          type +
+          " growth direction based on your goal.";
+
+
+        positioning.textContent =
+          "Position " +
+          name +
+          " around a clear customer promise and a strong reason to choose the business.";
+
+
+        customerGrowth.textContent =
+          "Focus on targeted customer acquisition through social media, referrals, partnerships and focused campaigns.";
+
+
+        digitalStrategy.textContent =
+          "Create a consistent digital presence with strong visual content, useful information and clear calls to action.";
+
+
+        retention.textContent =
+          "Build repeat business through excellent customer experience, follow-up communication, loyalty offers and personalized service.";
+
+
+        measurement.textContent =
+          "Track leads, conversions, repeat purchases, average order value and campaign performance every month.";
+
+
+        nextAction.textContent =
+          "Start with one measurable 30-day objective connected directly to this goal: " +
+          goal;
+
+
+        result.classList.add("show");
+
+
+        setTimeout(function() {
+
+          result.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+
+        }, 100);
+
+      }
+    );
+
+
+    /* -------------------------
+       RESET RESULT
+    -------------------------- */
+
+    document
+      .getElementById("resetResult")
+      .addEventListener(
+        "click",
+        function() {
+
+          result.classList.remove("show");
+
+          businessForm.reset();
+
+          document
+            .getElementById("businessName")
+            .focus();
+
+        }
+      );
+
+
+    /* -------------------------
+       BACK TO TOP
+    -------------------------- */
+
+    const topBtn =
+      document.getElementById("topBtn");
+
+
+    window.addEventListener(
+      "scroll",
+      function() {
+
+        if (window.scrollY > 500) {
+
+          topBtn.classList.add("visible");
+
+        } else {
+
+          topBtn.classList.remove("visible");
+
+        }
+
+      }
+    );
+
+
+    topBtn.addEventListener(
+      "click",
+      function() {
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+    );
+
+
+    /* -------------------------
+       CURRENT YEAR
+    -------------------------- */
+
+    document.getElementById("year")
+      .textContent =
+      new Date().getFullYear();
+
+
+    /* -------------------------
+       REVEAL ANIMATION
+    -------------------------- */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".feature-image, .feature-content, .info-card, .planner-card, .cta-card"
+      );
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        function(entries) {
+
+          entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(
+      function(element) {
+
+        element.style.opacity = "0";
+        element.style.transform =
+          "translateY(20px)";
+        element.style.transition =
+          "opacity .7s ease, transform .7s ease";
+
+        revealObserver.observe(element);
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
